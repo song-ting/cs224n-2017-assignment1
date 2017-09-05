@@ -34,7 +34,7 @@ def softmax(x):
         ### YOUR CODE HERE
         x_max = np.max(x, axis=1, keepdims=True)
         x_exp = np.exp(x - x_max)
-        x = x_exp / np.sum(x_exp, axis=1)
+        x = x_exp / np.sum(x_exp, axis=1, keepdims=True)
         ### END YOUR CODE
     else:
         # Vector
