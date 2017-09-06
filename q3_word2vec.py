@@ -70,7 +70,6 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     dscore = y_hat  # shape (V,)
     dscore[target] -= 1.
     gradPred = np.dot(dscore, U)  # shape (N,)
-    # gradPred = - us[target] + np.sum(y_hat * us)  # shape (N,)
     grad = np.outer(dscore, vc)  # shape (V, N)
     ### END YOUR CODE
 
