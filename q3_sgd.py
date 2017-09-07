@@ -7,7 +7,7 @@ import glob
 import random
 import numpy as np
 import os.path as op
-import pickle as pickle # py2.7: cPickle / py3.5: pickle
+import pickle as pickle  # py2.7: cPickle / py3.5: pickle
 
 
 def load_saved_params():
@@ -85,7 +85,11 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
 
         cost = None
         ### YOUR CODE HERE
-        raise NotImplementedError
+        cost, dx = f(x)  # forward and backward, getting cost and gradient of x
+
+        x -= step * dx  # update x by step and gradient
+        postprocessing(x)  # postprocessing
+
         ### END YOUR CODE
 
         if iter % PRINT_EVERY == 0:
@@ -138,4 +142,4 @@ def your_sanity_checks():
 
 if __name__ == "__main__":
     sanity_check()
-    your_sanity_checks()
+    # your_sanity_checks()
