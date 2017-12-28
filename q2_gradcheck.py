@@ -33,14 +33,11 @@ def gradcheck_naive(f, x):
         x[ix] += h
         random.setstate(rndstate)
         fx_pos, _ = f(x)
-
         x[ix] -= 2 * h
         random.setstate(rndstate)
         fx_neg, _ = f(x)
         x[ix] += h
-
         numgrad = (fx_pos - fx_neg) / (2 * h)
-
         ### END YOUR CODE
 
         # Compare gradients

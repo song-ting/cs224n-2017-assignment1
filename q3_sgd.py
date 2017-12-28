@@ -88,7 +88,7 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
         cost, dx = f(x)  # forward and backward, getting cost and gradient of x
 
         x -= step * dx  # update x by step and gradient
-        postprocessing(x)  # postprocessing
+        x = postprocessing(x)  # postprocessing
 
         ### END YOUR CODE
 
