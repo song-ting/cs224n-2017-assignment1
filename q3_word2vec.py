@@ -108,12 +108,10 @@ def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
     grad = np.zeros(outputVectors.shape)  # shape (W, N)
     vc = predicted  # shape (N,)
     uo = outputVectors[target]  # shape (N,)
-    u_samp = outputVectors[indices[1:]]  # shape (K, N)
     yo = sigmoid(np.dot(uo, vc))  # scaler
-    # y_neg_samp = sigmoid(-np.dot(u_samp, vc))  # shape (K,)
-    cost += -np.log(yo) #- np.sum(np.log(y_neg_samp))
+    cost += -np.log(yo)
 
-    gradPred += (yo - 1) * uo  # - np.dot(y_neg_samp - 1, u_samp)  # shape (N,)
+    gradPred += (yo - 1) * uo  # shape (N,)
     grad[target] += (yo - 1) * vc
     for k in indices[1:]:
         uk = outputVectors[k]
